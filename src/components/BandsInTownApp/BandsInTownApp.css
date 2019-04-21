@@ -1,0 +1,22 @@
+.bit-app {
+  text-align: center;
+}
+
+.bit-app-header {
+  background-color: #282c34;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  min-height: 30vh;
+}
+
+.bit-app-wrapper {
+  background-color: darkslateblue;
+  min-height: 70vh;
+}
+
+.full-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
