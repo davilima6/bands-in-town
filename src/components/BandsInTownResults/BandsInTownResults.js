@@ -7,6 +7,15 @@ import "./BandsInTownResults.css";
  * @returns {string} Markup of the component
  */
 const BandsInTownResults = props => {
+  if (props.hasError) {
+    return (
+      <section className="bit-results">
+        <p>There was an error retrieving the artist information.</p>
+        <p>Please try again.</p>
+      </section>
+    );
+  }
+
   return Object.keys(props.artist).length ? (
     <section className="bit-results">
       <div className="artist-image">
@@ -40,7 +49,11 @@ const BandsInTownResults = props => {
         )}
       </div>
     </section>
-  ) : null;
+  ) : (
+    <section className="bit-results">
+      <p>There's no information registered for this artist yet.</p>
+    </section>
+  );
 };
 
 export default BandsInTownResults;

@@ -23,9 +23,16 @@
 }
 
 .form-btn {
-    background: white;
+    background-color: white;
     border: 0;
     font-size: 2em;
     padding: 0.5em;
 }
 
+.form-btn:hover {
+    background-color: yellow;
+}
+
+.form-btn:active {
+    background-color: darkgoldenrod;
+}
