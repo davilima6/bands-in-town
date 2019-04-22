@@ -3,7 +3,33 @@ import { BandsInTownForm, BandsInTownResults } from "../";
 import "./BandsInTownApp.css";
 
 const BASE_URL = "https://rest.bandsintown.com";
-const APP_ID = "?app_id=bandcamp";
+const APP_ID = "?app_id=foo";
+
+/**
+ * Get information from API
+ * @method fetchAPI
+ * @param {string} artistName
+ * @returns {Promise} Promise that resolves to artist object or rejects with error
+ */
+async function getFromApi(artistName, getEvents = false) {
+  try {
+    const url = `${BASE_URL}/artists/${artistName}${getEvents ? '/events' : ''}${APP_ID}`;
+    const response = await fetch(url, { mode: "cors" });
+    if (getEvents) {
+      debugger;
+    }
+
+    if (response.ok) {
+      return response.json();
+    }
+
+    console.error(response);
+    throw new Error({ error: response.error });
+  } catch (response) {
+    console.error(response);
+    throw new Error({ error: response.error });
+  }
+}
 
 /**
  * Get artist information from API
@@ -12,19 +38,17 @@ const APP_ID = "?app_id=bandcamp";
  * @returns {Promise} Promise that resolves to artist object or rejects with error
  */
 async function getArtist(artistName) {
-  try {
-    const url = `${BASE_URL}/artists/${artistName}${APP_ID}`;
-    const response = await fetch(url, { mode: "cors" });
+  return await getFromApi(artistName);
+}
 
-    if (response.ok) {
-      return await response.json();
-    }
-    console.error(response);
-    throw new Error({ error: response.error });
-  } catch (response) {
-    console.error(response);
-    throw new Error({ error: response.error });
-  }
+/**
+ * Get artist events information from API
+ * @method getArtistEvents
+ * @param {string} artistName
+ * @returns {Promise} Promise that resolves to events array or rejects with error
+ */
+async function getArtistEvents(artistName) {
+  return await getFromApi(artistName, true);
 }
 
 /**
@@ -49,11 +73,16 @@ const BandsInTownApp = () => {
     try {
       setHasError(false);
       artist = await getArtist(artistName);
+      debugger;
+      artist.events = await getArtistEvents(artistName);
     } catch (error) {
       setHasError(true);
     }
 
-    setIsFirstSearch(false);
+    if (isFirstSearch) {
+      setIsFirstSearch(false);
+    };
+
     setArtist(artist);
   }
 

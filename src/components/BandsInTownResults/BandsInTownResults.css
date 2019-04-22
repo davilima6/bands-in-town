@@ -4,3 +4,27 @@
   margin: 2em 0 1em;
   padding: 1em;
 }
+
+.bit-events-header {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 0.5em 0;
+}
+
+.bit-artist-name {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.bit-artist-fb-page {
+  margin: 0.5em 0 2em;
+}
+
+.bit-link {
+  color: grey;
+  text-decoration: none;
+}
+
+.bit-link:hover {
+  text-decoration: underline;
+}

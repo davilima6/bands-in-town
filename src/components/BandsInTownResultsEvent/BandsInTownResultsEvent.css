@@ -1,0 +1,9 @@
+.bit-results-event {
+  background-color: #efefef;
+  list-style: none;
+  padding: 1em 0;
+}
+
+.bit-results-event:nth-child(odd) {
+  background-color: #fefefe;
+}
