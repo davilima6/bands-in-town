@@ -2,6 +2,13 @@
     min-height: 20vh;
 }
 
+.form-label {
+    color: white;
+    display: block;
+    font-size: 1.5em;
+    margin: 1em 0;
+}
+
 .form-field {
     margin: 1em 0;
 }
