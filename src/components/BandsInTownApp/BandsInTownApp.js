@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ArtistInfo, ArtistEvent } from "../../models/";
 import { BandsInTownForm, BandsInTownResults } from "../";
 import "./BandsInTownApp.css";
 
@@ -15,9 +16,6 @@ async function getFromApi(artistName, getEvents = false) {
   try {
     const url = `${BASE_URL}/artists/${artistName}${getEvents ? '/events' : ''}${APP_ID}`;
     const response = await fetch(url, { mode: "cors" });
-    if (getEvents) {
-      debugger;
-    }
 
     if (response.ok) {
       return response.json();
@@ -35,20 +33,28 @@ async function getFromApi(artistName, getEvents = false) {
  * Get artist information from API
  * @method getArtist
  * @param {string} artistName
- * @returns {Promise} Promise that resolves to artist object or rejects with error
+ * @returns {Promise} Promise that resolves to ArtistInfo object or rejects with error
  */
-async function getArtist(artistName) {
-  return await getFromApi(artistName);
+async function getArtistInfo(artistName) {
+  let artistInfo = await getFromApi(artistName);
+
+  artistInfo = new ArtistInfo(artistInfo);
+
+  return artistInfo;
 }
 
 /**
  * Get artist events information from API
  * @method getArtistEvents
  * @param {string} artistName
- * @returns {Promise} Promise that resolves to events array or rejects with error
+ * @returns {Promise} Promise that resolves to ArtistEvent array or rejects with error
  */
 async function getArtistEvents(artistName) {
-  return await getFromApi(artistName, true);
+  let artistEvents = await getFromApi(artistName, true);
+
+  artistEvents = artistEvents.map(el => new ArtistEvent(el));
+
+  return artistEvents;
 }
 
 /**
@@ -72,8 +78,7 @@ const BandsInTownApp = () => {
 
     try {
       setHasError(false);
-      artist = await getArtist(artistName);
-      debugger;
+      artist = await getArtistInfo(artistName);
       artist.events = await getArtistEvents(artistName);
     } catch (error) {
       setHasError(true);

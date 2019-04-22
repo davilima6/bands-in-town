@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { BandsInTownResultsEvent } from "./BandsInTownResultsEvent";
+import { ArtistEvent } from "../../models";
 
 describe("BandsInTownResultsEvent", () => {
   let component;
@@ -8,7 +9,7 @@ describe("BandsInTownResultsEvent", () => {
   beforeEach(() => {
     const props = {
       event: {
-        datetime: "2019-12-11T18:00:00",
+        date: "Sat May 11 2019",
         venue: {
           name: "Velodrom",
           city: "Berlin",
