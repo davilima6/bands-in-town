@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./BandsInTownInput.css";
+import "./BandsInTownForm.css";
 
 /**
- * BandsInTownInput component
- * @function BandsInTownInput
+ * BandsInTownForm component
+ * @function BandsInTownForm
  * @returns {string} Markup of the component
  */
-const BandsInTownInput = props => {
+const BandsInTownForm = props => {
   const [artistName, _setArtistName] = useState("");
 
   const setArtistName = _artistName => {
@@ -50,4 +50,4 @@ const BandsInTownInput = props => {
   );
 };
 
-export default BandsInTownInput;
+export default BandsInTownForm;

@@ -1,13 +1,12 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import BandsInTownInput from './BandsInTownInput';
+import BandsInTownForm from './BandsInTownForm';
 
-describe('BandsInTownInput', () => {
+describe('BandsInTownForm', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<BandsInTownInput />);
+    component = shallow(<BandsInTownForm />);
   });
 
   test('renders without crashing', () => expect(component).toBeDefined());

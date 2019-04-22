@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BandsInTownInput, BandsInTownResults } from "../";
+import { BandsInTownForm, BandsInTownResults } from "../";
 import "./BandsInTownApp.css";
 
 const BASE_URL = "https://rest.bandsintown.com";
@@ -52,7 +52,7 @@ const BandsInTownApp = () => {
       </header>
       <div className="bit-app-wrapper full-center">
         <BandsInTownResults artist={artist} />
-        <BandsInTownInput setArtist={setArtist} onSubmit={handleSubmit} />
+        <BandsInTownForm setArtist={setArtist} onSubmit={handleSubmit} />
       </div>
     </div>
   );
