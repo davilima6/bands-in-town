@@ -38,7 +38,7 @@ const BandsInTownResults = props => {
           <em>This artist does not have a registered Facebook page yet.</em>
         )}
       </p>
-      {props.artist.events && (
+      {props.artist.events.length ? (
         <div className="bit-events">
           <h3 className="bit-events-header">Upcoming Events</h3>
           <ul>
@@ -47,7 +47,7 @@ const BandsInTownResults = props => {
             ))}
           </ul>
         </div>
-      )}
+      ) : null}
     </section>
   ) : (
     <section className="bit-results">
