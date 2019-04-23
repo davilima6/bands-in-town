@@ -22,7 +22,7 @@ function StorageService(storage = "localStorage") {
   function clearAll() {
     Object.keys(STORAGE).forEach(key => {
       if (key.startsWith(APP_PREFIX)) {
-        this.clear(key.slice(APP_PREFIX.length));
+        this.clear(key.slice(APP_PREFIX.length + 2));
       }
     });
 

@@ -22,9 +22,9 @@ describe("BandsInTownResults", () => {
 
   test("renders without crashing", () => expect(component).toBeDefined());
 
-  test("renders result", () => {
+  test("renders a result", () => {
     const imageSrc = component.find(".bit-artist-image img").props().src;
-    const fbPage = component.find(".bit-artist-fb-page").text();
+    const fbPage = component.find(".bit-artist-fb-page .bit-link").props().href;
     const name = component.find(".bit-artist-name").text();
 
     expect(imageSrc).toEqual(props.artist.image_url);
@@ -32,13 +32,13 @@ describe("BandsInTownResults", () => {
     expect(name).toEqual(props.artist.name);
   });
 
-  test("renders no events", () => {
+  test("renders a result with no events", () => {
     const items = component.find(".bit-events");
 
     expect(items.length).toEqual(0);
   });
 
-  test("renders events", () => {
+  test("renders a result with events", () => {
     props.artist.events = [
       {
         id: "1013498469",
