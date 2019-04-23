@@ -1,5 +1,5 @@
 /**
- * Import point for model modules.
+ * Import point for models modules.
  * @module models
  * @example import { ArtistInfo } from 'models';
  */

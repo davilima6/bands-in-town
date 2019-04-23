@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StorageService } from "../../services";
-import { sanitize } from "../../utils";
+import { strFormat, strSanitize } from "../../utils";
 import "./BandsInTownForm.css";
 
 /**
@@ -30,7 +30,7 @@ const BandsInTownForm = props => {
 
     setIsEnabled(false);
 
-    const sanitizedArtistName = sanitize(artistName);
+    const sanitizedArtistName = strSanitize(artistName);
 
     setArtistName(sanitizedArtistName);
 
@@ -57,7 +57,7 @@ const BandsInTownForm = props => {
             className="form-input"
             autoComplete="off"
             disabled={!isEnabled}
-            value={artistName}
+            value={strFormat(artistName)}
             onChange={event => setArtistName(event.target.value)}
           />
         </div>

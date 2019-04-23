@@ -1,7 +1,7 @@
 /**
- * Import point for model modules.
- * @module models
- * @example import { ArtistInfo } from 'models';
+ * Import point for utils modules.
+ * @module utils
+ * @example import { strFormat } from 'utils';
  */
 
-export { sanitize } from './utils';
+export { strFormat, strSanitize } from './utils';
