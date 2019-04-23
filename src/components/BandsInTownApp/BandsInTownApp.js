@@ -80,8 +80,8 @@ const BandsInTownApp = () => {
     try {
       setHasError(false);
       [artist, events] = await Promise.all([
-        getArtistInfo(artistName),
-        getArtistEvents(artistName)
+        getArtistInfo(artistName).catch(err => err),
+        getArtistEvents(artistName).catch(err => err)
       ]);
       artist.events = events;
     } catch (error) {
