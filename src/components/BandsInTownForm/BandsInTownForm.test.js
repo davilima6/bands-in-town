@@ -57,7 +57,9 @@ describe("BandsInTownForm", () => {
     const mountedComponent = mount(<BandsInTownForm {...props} />);
     const btn = mountedComponent.find(".form-btn");
 
-    btn.simulate("submit");
+    act(() => {
+      btn.simulate("submit");
+    });
 
     expect(onSubmit.mock.calls.length).toEqual(1);
   });
