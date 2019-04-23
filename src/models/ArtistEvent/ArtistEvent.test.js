@@ -1,4 +1,4 @@
-import ArtistEvent from "./artist-event";
+import ArtistEvent from "./ArtistEvent";
 
 describe("ArtistEvent", () => {
   test("instantiates a payload correctly", () => {

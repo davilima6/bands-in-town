@@ -4,5 +4,5 @@
  * @example import { ArtistInfo } from 'models';
  */
 
-export { default as ArtistInfo } from './artist-info';
-export { default as ArtistEvent } from './artist-event';
+export { default as ArtistInfo } from './ArtistInfo/ArtistInfo';
+export { default as ArtistEvent } from './ArtistEvent/ArtistEvent';

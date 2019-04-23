@@ -1,4 +1,4 @@
-import ArtistInfo from "./artist-info";
+import ArtistInfo from "./ArtistInfo";
 
 describe("ArtistInfo", () => {
   test("instantiates a payload correctly", () => {
