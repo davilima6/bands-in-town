@@ -4,23 +4,23 @@
  * @returns {Object} Public API of StorageService
  */
 function StorageService(storage = "localStorage") {
-  const STORAGE = window[storage];
   const APP_PREFIX = "foo";
+  const storage_ = window[storage];
 
   function get(key) {
-    return STORAGE.getItem(`${APP_PREFIX}__${key}`);
+    return storage_.getItem(`${APP_PREFIX}__${key}`);
   }
 
   function set(key, value) {
-    STORAGE.setItem(`${APP_PREFIX}__${key}`, value);
+    storage_.setItem(`${APP_PREFIX}__${key}`, value);
   }
 
   function clear(key) {
-    STORAGE.removeItem(`${APP_PREFIX}__${key}`);
+    storage_.removeItem(`${APP_PREFIX}__${key}`);
   }
 
   function clearAll() {
-    Object.keys(STORAGE).forEach(key => {
+    Object.keys(storage_).forEach(key => {
       if (key.startsWith(APP_PREFIX)) {
         this.clear(key.slice(APP_PREFIX.length + 2));
       }
