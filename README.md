@@ -1,5 +1,7 @@
 ## Bands in Town
 
+Live in: https://bands-in-town.now.sh/
+
 This React app takes an artist and shows details about them and their events. The app provides:
 
 - A way to input the artist's name
