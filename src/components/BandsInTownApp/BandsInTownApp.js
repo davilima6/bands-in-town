@@ -14,7 +14,7 @@ const APP_ID = "?app_id=foo";
  */
 async function getFromApi(artistName, getEvents = false) {
   try {
-    const url = `${BASE_URL}/artists/${artistName}${getEvents ? '/events' : ''}${APP_ID}`;
+    const url = `${BASE_URL}/artists/${artistName}${getEvents ? "/events" : ""}${APP_ID}`;
     const response = await fetch(url, { mode: "cors" });
 
     if (response.ok) {
@@ -75,18 +75,22 @@ const BandsInTownApp = () => {
    */
   async function handleSubmit(artistName) {
     let artist = {};
+    let events = [];
 
     try {
       setHasError(false);
-      artist = await getArtistInfo(artistName);
-      artist.events = await getArtistEvents(artistName);
+      [artist, events] = await Promise.all([
+        getArtistInfo(artistName),
+        getArtistEvents(artistName)
+      ]);
+      artist.events = events;
     } catch (error) {
       setHasError(true);
     }
 
     if (isFirstSearch) {
       setIsFirstSearch(false);
-    };
+    }
 
     setArtist(artist);
   }
