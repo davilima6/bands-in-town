@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StorageService } from "../../services";
+import { sanitize } from "../../utils";
 import "./BandsInTownForm.css";
 
 /**
@@ -19,32 +20,17 @@ const BandsInTownForm = props => {
   const [isEnabled, setIsEnabled] = useState(true);
 
   /**
-   * Sanitize user input and persist in component's local state
-   * @function setArtistName
-   * @param {string} artistName
-   * @returns {undefined}
-   */
-  function sanitizeArtistName(artistName) {
-    const artistNameSanitized = artistName
-      .replace("/", "%252F")
-      .replace("?", "%253F")
-      .replace("*", "%252A")
-      .replace('"', "%27C");
-
-    return artistNameSanitized;
-  }
-
-  /**
-   * Sanitize user input and persist in component's local state
+   * Handle form submission by sanitizing user input and persisting it in both local component state and browser storage
    * @function onSubmit
    * @param {MouseEvent} artistName
    * @returns {undefined}
    */
   async function onSubmit(event) {
     event.preventDefault();
+
     setIsEnabled(false);
 
-    const sanitizedArtistName = sanitizeArtistName(artistName)
+    const sanitizedArtistName = sanitize(artistName);
 
     setArtistName(sanitizedArtistName);
 
