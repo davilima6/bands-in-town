@@ -2,11 +2,11 @@
 
 Live in: https://bands-in-town.now.sh/
 
-This React app takes an artist and shows details about them and their events. The app provides:
+This React app takes an artist and shows details about them and their events. The app queries [Bands In Town API](https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0) to provide:
 
-- A way to input the artist's name
+- A way for user to input the desired artist's name
 
-- A result based on such input, displaying:
+- A result based on such input, containing:
   - Artist Picture
   - Artist Name
   - Artist Facebook URL
@@ -16,7 +16,7 @@ This React app takes an artist and shows details about them and their events. Th
     - Event City
     - Event Country
 
-_This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)_
+_This project was bootstrapped at React 16.8.6 with [Create React App](https://github.com/facebook/create-react-app)_.
 
 ## Main Scripts
 
