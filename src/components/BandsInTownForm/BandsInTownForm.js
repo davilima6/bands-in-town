@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import "./BandsInTownForm.css";
 
 /**
+ * @typedef {object} MouseEvent
+ */
+
+ /**
  * BandsInTownForm component
  * @function BandsInTownForm
+ * @param {Object} props - Component properties
  * @returns {string} Markup of the component
  */
 const BandsInTownForm = props => {
@@ -28,11 +34,11 @@ const BandsInTownForm = props => {
 
   /**
    * Sanitize user input and persist in component's local state
-   * @method setArtistName
-   * @param {string} artistName
+   * @method onSubmit
+   * @param {MouseEvent} artistName
    * @returns {undefined}
    */
-  async function handleSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault();
     setArtistName("");
     setIsEnabled(false);
@@ -45,7 +51,7 @@ const BandsInTownForm = props => {
 
   return (
     <section className="bit-input full-center">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="form-field">
           <label htmlFor="form-input" className="form-label">
             Search an artist
@@ -56,6 +62,7 @@ const BandsInTownForm = props => {
             id="form-input"
             className="form-input"
             autoComplete="off"
+            disabled={!isEnabled}
             value={artistName}
             onChange={event => setArtistName(event.target.value)}
           />
@@ -68,6 +75,16 @@ const BandsInTownForm = props => {
       </form>
     </section>
   );
+};
+
+/**
+ * Property types
+ * @property {Object} propTypes Property types
+ * @static
+ */
+BandsInTownForm.propTypes = {
+  setArtist: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default BandsInTownForm;

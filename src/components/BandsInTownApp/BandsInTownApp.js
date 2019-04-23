@@ -69,11 +69,11 @@ const BandsInTownApp = () => {
 
   /**
    * Handle form submission: fetch artist info from API and update main component state
-   * @method getRecipes
+   * @method onSubmit
    * @param {string} artistName
    * @returns {undefined}
    */
-  async function handleSubmit(artistName) {
+  async function onSubmit(artistName) {
     let artist = {};
     let events = [];
 
@@ -102,7 +102,7 @@ const BandsInTownApp = () => {
       </header>
       <div className="bit-app-wrapper full-center">
         {!isFirstSearch && <BandsInTownResults artist={artist} hasError={hasError} />}
-        <BandsInTownForm setArtist={setArtist} onSubmit={handleSubmit} />
+        <BandsInTownForm setArtist={setArtist} onSubmit={onSubmit} />
       </div>
     </div>
   );

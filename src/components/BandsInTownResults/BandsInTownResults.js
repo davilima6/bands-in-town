@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { BandsInTownResultsEvent } from "../";
 import "./BandsInTownResults.css";
 
 /**
  * BandsInTownResults component
  * @function BandsInTownResults
+ * @param {Object} props - Component properties
  * @returns {string} Markup of the component
  */
 const BandsInTownResults = props => {
@@ -54,6 +56,16 @@ const BandsInTownResults = props => {
       <p>There's no information registered for this artist yet.</p>
     </section>
   );
+};
+
+/**
+ * Property types
+ * @property {Object} propTypes Property types
+ * @static
+ */
+BandsInTownResults.propTypes = {
+  artist: PropTypes.shape().isRequired,
+  hasError: PropTypes.bool.isRequired
 };
 
 export default BandsInTownResults;
