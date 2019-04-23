@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ArtistInfo, ArtistEvent } from "../../models/";
+import { StorageService } from "../../services";
 import { BandsInTownForm, BandsInTownResults } from "../";
 import "./BandsInTownApp.css";
 
@@ -80,7 +81,7 @@ const BandsInTownApp = () => {
     try {
       setHasError(false);
       [artist, events] = await Promise.all([
-        getArtistInfo(artistName).catch(err => err),
+        getArtistInfo(artistName),
         getArtistEvents(artistName).catch(err => err)
       ]);
       artist.events = events;
@@ -92,6 +93,7 @@ const BandsInTownApp = () => {
       setIsFirstSearch(false);
     }
 
+    StorageService.set('artist', artistName);
     setArtist(artist);
   }
 

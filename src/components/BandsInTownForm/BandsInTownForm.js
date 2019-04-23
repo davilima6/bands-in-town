@@ -1,47 +1,55 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { StorageService } from "../../services";
 import "./BandsInTownForm.css";
 
 /**
  * @typedef {object} MouseEvent
  */
 
- /**
+/**
  * BandsInTownForm component
  * @function BandsInTownForm
  * @param {Object} props - Component properties
  * @returns {string} Markup of the component
  */
 const BandsInTownForm = props => {
-  const [artistName, _setArtistName] = useState("");
+  const artistNameCached = StorageService.get("artist");
+  const [artistName, setArtistName] = useState(artistNameCached || "");
   const [isEnabled, setIsEnabled] = useState(true);
 
   /**
    * Sanitize user input and persist in component's local state
-   * @method setArtistName
+   * @function setArtistName
    * @param {string} artistName
    * @returns {undefined}
    */
-  async function setArtistName(artistName) {
+  function sanitizeArtistName(artistName) {
     const artistNameSanitized = artistName
       .replace("/", "%252F")
       .replace("?", "%253F")
       .replace("*", "%252A")
       .replace('"', "%27C");
 
-    _setArtistName(artistNameSanitized);
+    return artistNameSanitized;
   }
 
   /**
    * Sanitize user input and persist in component's local state
-   * @method onSubmit
+   * @function onSubmit
    * @param {MouseEvent} artistName
    * @returns {undefined}
    */
   async function onSubmit(event) {
     event.preventDefault();
-    setArtistName("");
     setIsEnabled(false);
+
+    const sanitizedArtistName = sanitizeArtistName(artistName)
+
+    setArtistName(sanitizedArtistName);
+
+    StorageService.set("artist", artistName);
+
     try {
       await props.onSubmit(artistName);
     } finally {
